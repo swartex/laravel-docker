@@ -1,0 +1,31 @@
+version: "2"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./public_html:/var/www
+      - ./logs:/var/log/nginx
+  php7.3:
+    build: .
+    volumes:
+      - ./public_html:/var/www
+  mysql:
+    image: mariadb:latest
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      #MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      PMA_HOST: mysql
+    depends_on:
+      - mysql
+    ports:
+      - "8081:80"

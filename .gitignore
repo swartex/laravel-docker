@@ -1,0 +1,8 @@
+mysql/*
+.idea/
+.vscode/
+logs/*
+www/*
+!www/readme.md
+public_html/*
+!.gitkeep
