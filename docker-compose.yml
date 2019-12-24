@@ -3,7 +3,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "83:80"
+      - "80:80"
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./public_html:/var/www
@@ -34,4 +34,4 @@ services:
     depends_on:
       - mysql
     ports:
-      - "8082:80"
+      - "8081:80"
