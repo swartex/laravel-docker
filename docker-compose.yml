@@ -20,7 +20,7 @@ services:
 #      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3307:3306
+      - 3306:3306
     volumes:
       - ./mysql:/var/lib/mysql
       - ./docker/mysql/docker.cnf:/etc/mysql/conf.d/docker.cnf
