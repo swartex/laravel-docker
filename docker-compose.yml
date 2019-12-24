@@ -8,8 +8,10 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./public_html:/var/www
       - ./logs:/var/log/nginx
-  php7.3:
-    build: .
+  php7.4:
+    build: 
+      context: .
+      dockerfile: ./docker/php/Dockerfile
     volumes:
       - ./public_html:/var/www
   mysql:
@@ -21,7 +23,7 @@ services:
       - 3307:3306
     volumes:
       - ./mysql:/var/lib/mysql
-      - ./db/docker.cnf:/etc/mysql/conf.d/docker.cnf
+      - ./docker/mysql/docker.cnf:/etc/mysql/conf.d/docker.cnf
     command:
       'mysqld --innodb-flush-method=fsync'
   phpmyadmin:
